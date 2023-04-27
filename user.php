@@ -1,0 +1,66 @@
+ 
+<?php
+include 'connect.php';
+if(isset($_POST['submit'])){
+    $name=$_POST['name']; 
+    $email=$_POST['email'];
+    $mobile=$_POST['mobile'];
+    $password=$_POST['password'];
+
+    $sql ="insert into `crud` (name,email,mobile,password) values('$name','$email','$mobile','$password')";  //note that the name 'crud' we are using is the name of the tabe in uor database
+    $result=mysqli_query($connection,$sql);//thi query will help to run our above query of user storing pf the user
+    
+    if($result){
+       header('location:display.php');
+    }else{
+        die(mysqli_error($connection));
+    };
+
+}
+
+?>
+ 
+ 
+ 
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <title>Crud of mine</title>
+ </head>
+ <body>
+    <div class="container ">
+        <form method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="name" placeholder="Enter your name" name="name">
+            </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="email" placeholder="Enter your email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile</label>
+            <input type="text" class="mobile" placeholder="Enter your mobile numbr" name="mobile">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="password" placeholder="Enter your password" name="password">
+        </div>
+        <input type="submit" name="submit" value="submit" >
+        </form>
+    </div>
+ </body>
+ </html>
+
+
+
+
+
+
+
+
